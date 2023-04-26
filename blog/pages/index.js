@@ -1,43 +1,46 @@
 import Head from 'next/head'
+// import { useEffect, useState } from 'react'
 import Layout, { siteTitle } from '../components/Layout'
+import { getSortedPostsData } from '../lib/posts'
 import utilStyles from '../styles/utils.module.css'
-// import { getSortedPostsData } from '../lib/posts'
-import { useEffect, useState } from 'react'
-
-// export async function getServerSideProps() {
-//   const allPostsData = getSortedPostsData()
-//   return {
-//     props: {
-//       allPostsData,
-//     },
-//   }
-// }
+import Link from 'next/link'
+import Date from '../components/Date'
 
 export async function getStaticProps() {
-  const response = await fetch('http://localhost:3000/api/posts')
-  const json = await response.json()
+  const allPostsData = getSortedPostsData()
+
   return {
     props: {
-      allPostsData: json.allPostsData,
+      allPostsData,
     },
   }
 }
 
-export default function Home({ allPostsData }) {
-  // const [allPostsData, setPostsData] = useState([])
-  // useEffect(() => {
-  //   fetch('api/posts')
-  //     .then((res) => res.json())
-  //     .then((data) => setPostsData(data.allPostsData))
-  // }, [])
+// export async function getServerSideProps() {
+//   const response = await fetch('http://localhost:3000/api/posts')
+//   const json = await response.json()
 
+//   return {
+//     props: {
+//       allPostsData: json.allPostsData,
+//     },
+//   }
+// }
+
+export default function Home({ allPostsData }) {
+  // const [allPostsData, setAllPostsData] = useState([])
+  // useEffect(() => {
+  //   fetch('/api/posts')
+  //     .then((res) => res.json())
+  //     .then((data) => setAllPostsData(data.allPostsData))
+  // }, [])
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>å
+        <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hi~ iam happyGGang</p>
+        <p>I love coding 😍</p>
         <p>
           (This is a sample website - you’ll be building a site like this on{' '}
           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
@@ -48,11 +51,13 @@ export default function Home({ allPostsData }) {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>

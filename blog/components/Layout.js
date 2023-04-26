@@ -4,8 +4,8 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = 'happyGGang'
-export const siteTitle = "happyGGang's blog"
+const name = 'KANG YUN KYOUNG'
+export const siteTitle = 'TECH BLOG'
 
 export default function Layout({ children, home }) {
   return (
@@ -34,25 +34,27 @@ export default function Layout({ children, home }) {
               className={utilStyles.borderCircle}
               height={144}
               width={144}
-              alt=""
+              alt={name}
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
           <>
-            <Link href="/">
-              <Image
-                priority
-                src="/images/cat.webp"
-                className={utilStyles.borderCircle}
-                height={108}
-                width={108}
-                alt=""
-              />
+            <Link href="/" legacyBehavior>
+              <a>
+                <Image
+                  priority
+                  src="/images/cat.webp"
+                  className={utilStyles.borderCircle}
+                  height={108}
+                  width={108}
+                  alt={name}
+                />
+              </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
+              <Link href="/" legacyBehavior>
+                <a className={utilStyles.colorInherit}>{name}</a>
               </Link>
             </h2>
           </>
@@ -61,7 +63,9 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
+          <Link href="/" legacyBehavior>
+            <a>← Back to home</a>
+          </Link>
         </div>
       )}
     </div>
