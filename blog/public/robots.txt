@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://vercel-blog-wwjf.vercel.app
+
+# Sitemaps
+Sitemap: https://vercel-blog-wwjf.vercel.app/sitemap.xml

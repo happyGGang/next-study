@@ -4,9 +4,10 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Utterances from './Utterances'
 
-const name = 'KANG YUN KYOUNG'
-export const siteTitle = 'TECH BLOG'
+const name = '✨GANG✨'
+export const siteTitle = 'ganglog'
 
 export default function Layout({ children, home }) {
   const [theme, setTheme] = useState(() =>
@@ -53,19 +54,23 @@ export default function Layout({ children, home }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
-        <button type="button" className="w-12 px-2" onClick={toggleTheme}>
-          {theme === 'dark' ? (
-            <img src="/dark-mode.svg" alt="dark-mode" />
-          ) : (
-            <img src="/light-mode.svg" alt="light-mode" />
-          )}
-        </button>
+        <div className="flex justify-end">
+          <button type="button" className="w-12 px-2" onClick={toggleTheme}>
+            {theme === 'dark' ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src="/dark-mode.svg" alt="dark-mode" />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src="/light-mode.svg" alt="light-mode" />
+            )}
+          </button>
+        </div>
         <header className={styles.header}>
           {home ? (
             <>
               <Image
                 priority
-                src="/images/cat.webp"
+                src="/images/profile.jpeg"
                 className={utilStyles.borderCircle}
                 height={144}
                 width={144}
@@ -79,7 +84,7 @@ export default function Layout({ children, home }) {
                 <a>
                   <Image
                     priority
-                    src="/images/cat.webp"
+                    src="/images/profile.jpeg"
                     className={utilStyles.borderCircle}
                     height={108}
                     width={108}
@@ -97,11 +102,14 @@ export default function Layout({ children, home }) {
         </header>
         <main>{children}</main>
         {!home && (
-          <div className={styles.backToHome}>
-            <Link href="/" legacyBehavior>
-              <a>← Back to home</a>
-            </Link>
-          </div>
+          <>
+            <Utterances />
+            <div className={styles.backToHome}>
+              <Link href="/" legacyBehavior>
+                <a>← Back to home</a>
+              </Link>
+            </div>
+          </>
         )}
       </div>
     </div>
