@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Utterances from './Utterances'
 
-const name = '✨GANG✨'
-export const siteTitle = 'ganglog'
+const name = '✨GGANG✨'
+export const siteTitle = 'gganglog'
 
 export default function Layout({ children, home }) {
   const [theme, setTheme] = useState(() =>
@@ -54,7 +54,7 @@ export default function Layout({ children, home }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
-        <div className="flex justify-end">
+        <div className="flex">
           <button type="button" className="w-12 px-2" onClick={toggleTheme}>
             {theme === 'dark' ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -62,6 +62,15 @@ export default function Layout({ children, home }) {
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
               <img src="/light-mode.svg" alt="light-mode" />
+            )}
+          </button>
+          <button type="button" className="w-12 px-2">
+            {theme === 'dark' ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src="/dark-github.svg" alt="dark-mode" />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src="/light-github.svg" alt="light-mode" />
             )}
           </button>
         </div>

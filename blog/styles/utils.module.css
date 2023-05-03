@@ -46,8 +46,19 @@
 
 .listItem {
   margin: 0 0 1.25rem;
+  /* border-bottom: 1px solisd rgb(240, 199, 199); */
+}
+
+/* .list li:last-child {
+  border-bottom: none;
+} */
+
+.listItem a {
+  font-weight: 700;
+  color: rgb(231, 117, 117);
 }
 
 .lightText {
+  font-size: 0.875rem;
   color: #666;
 }

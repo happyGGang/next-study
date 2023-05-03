@@ -2,7 +2,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import Date from '../../components/Date'
 import Layout from '../../components/Layout'
 import { getPostData, getAllPostIds } from '../../lib/posts'
-import utilStyles from '../../styles/utils.module.css'
+// import utilStyles from '../../styles/utils.module.css'
 import { useRouter } from 'next/router'
 import CodeBlock from '../../components/CodeBlock'
 
@@ -51,17 +51,29 @@ export default function Post({ postData }) {
   return (
     <Layout>
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
+        <div style={{ padding: '1.5rem 0' }}>
+          <h1>{postData.title}</h1>
+          <div style={{ fontSize: '0.8rem', color: '#747474' }}>
+            <Date dateString={postData.date} />
+          </div>
         </div>
-        <br />
-        {postData.contentHtml && (
-          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        )}
-        {postData.mdxSorce && (
-          <MDXRemote {...postData.mdxSorce} components={components} />
-        )}
+
+        <hr />
+
+        <div
+          style={{
+            padding: '1.5rem 0',
+            borderBottom: '1px solid #e9e9e9',
+            minHeight: '15rem',
+          }}
+        >
+          {postData.contentHtml && (
+            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+          )}
+          {postData.mdxSorce && (
+            <MDXRemote {...postData.mdxSorce} components={components} />
+          )}
+        </div>
       </article>
     </Layout>
   )
